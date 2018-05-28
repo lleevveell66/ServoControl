@@ -52,13 +52,3 @@ while True:
 		pwm.set_pwm(0,0,396)
 		break
 
-
-
-
-
-
-#        pwm.set_pwm(0,0,370)
-#        pwm.set_pwm(0, 0, servo_max)
-#        time.sleep(1)
-
-#	set_servo_pulse(0,500)
