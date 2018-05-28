@@ -1,5 +1,5 @@
 This is just a hacked up example script from Adafruit's PCA9685 PWM servo/LED controller python library
-for Raspberry Pi, which will work the Paralax 900-00008 Continuous Rotation Servo which people have some 
+for Raspberry Pi, which will work the Parallax 900-00008 Continuous Rotation Servo which people have some 
 trouble with.
 
 The trick on this servo is to find the "magic" center pulse which stops the servo.  Any pulse value
@@ -18,3 +18,42 @@ the servo turn counter-clockwise.  397 will be veeeeery slow.  425 is about as f
 
 Remember that you get higher torque at lower speeds, so don't try to over-do it.  If you need speed, go for a normal 
 DC motor.
+
+# Pre-requisites
+================
+
+Jump the following pins from the PCA9685 to your Raspberry Pi:
+
+GND <---> GND (Pin 6)
+SCL <---> I2C SDA (Pin 3)
+SDA <---> I2C SCL (Pin 5)
+VCC <---> 3.3V (Pin 1) [WARNING!  Do NOT use 5V for this.)
+
+Now, add a 4V to 6V power supply or battery pack to the V+ and GND terminal lugs on the PCA9685.  This power must be 
+separate.  Do not believe any pages which say otherwise.
+
+Now, plug your Parallax 900-00008 servo into slot 0 on the PCA9685.  The black wire goes to GND, which is the 
+outter-most pin on this board.
+
+# Installation
+==============
+
+```
+# Get your Raspberry Pi ready for I2C
+raspi-config  # enable I2C and reboot
+apt-get install git build-essential python-dev i2c-tools python-smbus
+i2cdetect -y 1
+
+# Get the Adafruit Python PCA9685 library and install it
+cd /usr/local/src
+git clone https://github.com/adafruit/Adafruit_Python_PCA9685
+cd Adafruit_Python_PCA9685
+python setup.py install
+
+# Get my hacked-up script and try it out!
+cd /usr/local/src/
+git clone https://github.com/lleevveell66/ServoControl
+cd ServoControl
+chmod 755 PCA9685_Parallax900-00008_Test
+./PCA9685_Parallax900-00008_Test
+```
