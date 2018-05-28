@@ -24,10 +24,12 @@ DC motor.
 
 Jump the following pins from the PCA9685 to your Raspberry Pi:
 
+<pre>
 GND <---> GND (Pin 6)
 SCL <---> I2C SDA (Pin 3)
 SDA <---> I2C SCL (Pin 5)
 VCC <---> 3.3V (Pin 1) [WARNING!  Do NOT use 5V for this.)
+</pre>
 
 Now, add a 4V to 6V power supply or battery pack to the V+ and GND terminal lugs on the PCA9685.  This power must be 
 separate.  Do not believe any pages which say otherwise.
