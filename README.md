@@ -20,7 +20,6 @@ Remember that you get higher torque at lower speeds, so don't try to over-do it.
 DC motor.
 
 # Pre-requisites
-================
 
 Jump the following pins from the PCA9685 to your Raspberry Pi:
 
@@ -38,7 +37,6 @@ Now, plug your Parallax 900-00008 servo into slot 0 on the PCA9685.  The black w
 outter-most pin on this board.
 
 # Installation
-==============
 
 ```
 # Get your Raspberry Pi ready for I2C
@@ -59,3 +57,12 @@ cd ServoControl
 chmod 755 PCA9685_Parallax900-00008_Test
 ./PCA9685_Parallax900-00008_Test
 ```
+
+# Bonus
+
+I happen to have an HC-SR501 (DSN-FIR800) Human presence sensor... just an old PIR module like this:
+
+http://ozcott.com/NomadTronics/product/pir-motion-sensor-module/
+
+I connected it to GPIO 4 and changed the script into RunServoWhenGPIO4High, which will run the servo when motion is detected, 
+and stop it when the motion subsides.
